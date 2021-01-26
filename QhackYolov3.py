@@ -113,22 +113,24 @@ while True:
             #adjusted accordingly to the store owners desire. 
             if indexnum == 60:
                 #Twilio API codes for sending text messages to specified "to" number
-                client = Client("AC2980ffd04bb537b836e052ce09c5915e", "f5553dbc73e29be14b59802caa20527e")
+
+                #Twilio detected that I uploaded my Keys to github, for this to work you must create your own twilio account
+                client = Client("Code", "Code")
                 text = "There are " + str(num_person_detected) +  "Persons. Store is at" + str( int((num_person_detected / maxcapacity) * 100)) + " Percent Capacity"
                 #capacity is at 100%
                 if (num_person_detected / maxcapacity) * 100 == 100:
-                    client.messages.create(to="+12368636162", 
-                       from_="+16122947829", 
+                    client.messages.create(to="Number", 
+                       from_="Number", 
                        body="Store is at max capacity: "+str(num_person_detected))
                 #Capacity is at 60%
                 elif(num_person_detected / maxcapacity) * 100 >= 60:
-                        client.messages.create(to="+12368636162", 
-                       from_="+16122947829", 
+                        client.messages.create(to="Number", 
+                       from_="Number", 
                        body="Store is approaching max capacity: "+str(num_person_detected))
                 #Someone has entered the store
                 elif(num_person_detected / maxcapacity) * 100 >= 0:
-                    client.messages.create(to="+12368636162", 
-                    from_="+16122947829", 
+                    client.messages.create(to="Number", 
+                    from_="Number", 
                     body="Someone has entered the store: "+str(num_person_detected))
                     
                 #Google Text to speech
